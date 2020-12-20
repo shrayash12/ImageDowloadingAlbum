@@ -1,4 +1,4 @@
-package com.example.myimagedownloadingalbum.com.example.myimagedownloadingalbum;
+package com.example.myimagedownloadingalbum.com.example.myimagedownloadingalbum.view;
 
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
@@ -17,6 +17,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.example.myimagedownloadingalbum.R;
+import com.example.myimagedownloadingalbum.com.example.myimagedownloadingalbum.model.Photo;
 
 import java.util.ArrayList;
 import java.util.List;

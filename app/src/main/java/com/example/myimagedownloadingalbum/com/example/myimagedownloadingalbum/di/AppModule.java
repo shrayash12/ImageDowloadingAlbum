@@ -1,4 +1,4 @@
-package com.example.myimagedownloadingalbum.com.example.myimagedownloadingalbum;
+package com.example.myimagedownloadingalbum.com.example.myimagedownloadingalbum.di;
 
 import android.app.Application;
 

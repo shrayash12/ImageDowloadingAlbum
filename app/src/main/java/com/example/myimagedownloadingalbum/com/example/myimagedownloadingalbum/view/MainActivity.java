@@ -1,18 +1,23 @@
-package com.example.myimagedownloadingalbum.com.example.myimagedownloadingalbum;
+package com.example.myimagedownloadingalbum.com.example.myimagedownloadingalbum.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.myimagedownloadingalbum.R;
+import com.example.myimagedownloadingalbum.com.example.myimagedownloadingalbum.model.ImageResponse;
+import com.example.myimagedownloadingalbum.com.example.myimagedownloadingalbum.model.ImageService;
+import com.example.myimagedownloadingalbum.com.example.myimagedownloadingalbum.model.Photo;
+import com.example.myimagedownloadingalbum.com.example.myimagedownloadingalbum.di.MyApp;
+import com.example.myimagedownloadingalbum.com.example.myimagedownloadingalbum.presenter.Presenter;
+import com.example.myimagedownloadingalbum.com.example.myimagedownloadingalbum.utility.Utility;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -22,11 +27,8 @@ import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.core.Observer;
 import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
-import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory;
-import retrofit2.converter.gson.GsonConverterFactory;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity  {
     @Inject
     ImageService imageService;
     @Inject
@@ -47,11 +49,12 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView.setAdapter(imageAdapter);
 
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                hideKeyboard(MainActivity.this);
+                Utility.hideKeyboard(MainActivity.this);
                 Observable<ImageResponse> output = callImageService(imageService, editText.getText().toString());
 
                 output.subscribeOn(Schedulers.io())
@@ -85,14 +88,4 @@ public class MainActivity extends AppCompatActivity {
         return imageService.getImage(query, "10");
     }
 
-    public static void hideKeyboard(Activity activity) {
-        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
-        //Find the currently focused view, so we can grab the correct window token from it.
-        View view = activity.getCurrentFocus();
-        //If no view currently has focus, create a new one, just so we can grab a window token from it
-        if (view == null) {
-            view = new View(activity);
-        }
-        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
-    }
 }

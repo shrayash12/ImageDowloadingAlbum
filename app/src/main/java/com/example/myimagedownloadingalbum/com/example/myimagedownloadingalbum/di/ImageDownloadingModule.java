@@ -1,4 +1,7 @@
-package com.example.myimagedownloadingalbum.com.example.myimagedownloadingalbum;
+package com.example.myimagedownloadingalbum.com.example.myimagedownloadingalbum.di;
+
+import com.example.myimagedownloadingalbum.com.example.myimagedownloadingalbum.view.ImageAdapter;
+import com.example.myimagedownloadingalbum.com.example.myimagedownloadingalbum.model.ImageService;
 
 import javax.inject.Singleton;
 
@@ -30,7 +33,7 @@ public class ImageDownloadingModule {
 
     @Provides
     @Singleton
-    public static ImageAdapter imageAdapter() {
+    public static ImageAdapter povideImageAdapter() {
         return new ImageAdapter();
     }
 }

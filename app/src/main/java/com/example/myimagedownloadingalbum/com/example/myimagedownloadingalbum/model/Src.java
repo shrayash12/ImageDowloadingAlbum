@@ -1,5 +1,5 @@
 
-package com.example.myimagedownloadingalbum.com.example.myimagedownloadingalbum;
+package com.example.myimagedownloadingalbum.com.example.myimagedownloadingalbum.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
